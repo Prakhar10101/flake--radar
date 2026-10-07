@@ -147,3 +147,9 @@ vite.config.ts.timestamp-*
 
 # Turbo Repo
 .turbo
+
+.env
+test-results/
+playwright-report/
+flake-radar-results.json
+flake-radar-report.md

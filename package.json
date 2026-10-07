@@ -1,0 +1,26 @@
+{
+  "name": "flake--radar",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/Prakhar10101/flake--radar#readme",
+  "bugs": {
+    "url": "https://github.com/Prakhar10101/flake--radar/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Prakhar10101/flake--radar.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@playwright/test": "^1.63.0"
+  },
+  "devDependencies": {
+    "dotenv": "^18.0.6"
+  }
+}
