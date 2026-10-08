@@ -7,5 +7,5 @@ module.exports = defineConfig({
   retries: 1,
   timeout: 15000,
   use: { baseURL: "https://www.saucedemo.com" },
-  reporter: [["list"]],
+  reporter: [["list"], ["./src/reporter.js"]],
 });
