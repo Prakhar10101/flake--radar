@@ -39,3 +39,21 @@ test("unmatched error is UNKNOWN", () => {
     "UNKNOWN",
   );
 });
+
+test("assertion on a found element is an assertion mismatch", () => {
+  const f = {
+    ...base,
+    message:
+      "expect(locator).toHaveText(expected) failed\n\nLocator: locator('.x')\nExpected string: \"A\"\nReceived string: \"B\"\n\nCall log:\n  - waiting for locator('.x')",
+  };
+  assert.equal(classify(f).category, "ASSERTION_MISMATCH");
+});
+
+test("expect on a missing element is a selector issue", () => {
+  const f = {
+    ...base,
+    message:
+      "expect(locator).toBeVisible() failed\n\nExpected: visible\nReceived: <element(s) not found>",
+  };
+  assert.equal(classify(f).category, "SELECTOR_ISSUE");
+});

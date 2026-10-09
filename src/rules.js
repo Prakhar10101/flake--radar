@@ -31,11 +31,7 @@ function classify(f) {
     );
   }
 
-  if (
-    /waiting for (locator|getBy)|element\(s\) not found|strict mode violation/i.test(
-      f.message,
-    )
-  ) {
+  if (/element\(s\) not found|strict mode violation/i.test(f.message)) {
     return verdict(
       "SELECTOR_ISSUE",
       "R4: element could not be found or was ambiguous",
@@ -46,6 +42,13 @@ function classify(f) {
     return verdict(
       "ASSERTION_MISMATCH",
       "R5: assertion compared expected vs received values",
+    );
+  }
+
+  if (/waiting for (locator|getBy)/i.test(f.message)) {
+    return verdict(
+      "SELECTOR_ISSUE",
+      "R5b: action timed out waiting for an element",
     );
   }
 
