@@ -34,7 +34,10 @@ async function askLLM(failure, ruleVerdict) {
       }),
       signal: AbortSignal.timeout(20000),
     });
-    if (!res.ok) return null;
+    if (!res.ok) {
+      console.log("[flake-radar] LLM error", res.status, await res.text());
+      return null;
+    }
 
     const data = await res.json();
     const text = data.choices?.[0]?.message?.content ?? "";
