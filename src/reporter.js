@@ -68,7 +68,10 @@ class FlakeRadarReporter {
 
       if (outcome === "flaky") {
         summary = `Failed ${badAttempts.length} time(s), then passed on retry.`;
-      } else if (this.useLLM) {
+      } else if (
+        this.useLLM &&
+        (!process.env.LLM_ONLY_UNKNOWN || verdict.category === "UNKNOWN")
+      ) {
         const ai = await askLLM(failure, verdict);
         if (ai) {
           summary = ai.summary || "";
