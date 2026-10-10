@@ -43,6 +43,7 @@ function renderMarkdown(failures) {
     .join("\n");
 
   const details = failures
+    .slice(0, 10)
     .map((f) => {
       const reqs = f.network.length
         ? "**Failed requests:**\n" +
@@ -78,7 +79,7 @@ ${chips}
 |---|---|---|
 ${rows}
 
-### Details
+### Details${failures.length > 10 ? ` (first 10 of ${failures.length})` : ""}
 
 ${details}
 `;
