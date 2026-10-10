@@ -10,6 +10,7 @@ if (mode === "rules") {
   delete env.FLAKE_RADAR_NO_LLM;
   env.LLM_ONLY_UNKNOWN = "1";
   env.LLM_MAX_CALLS = "200";
+  env.LLM_OMIT_TITLE = "1";
 }
 
 spawnSync("npx playwright test", { stdio: "inherit", shell: true, env });
